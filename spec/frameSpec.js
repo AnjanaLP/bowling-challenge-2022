@@ -21,4 +21,18 @@ describe('Frame', () => {
       });
     });
   });
+
+  describe('#score', () => {
+    it('returns the sum of the pins knocked in the frame', () => {
+      expect(frame.score()).toEqual(5);
+
+    });
+
+    describe('when there is no input for a roll', () => {
+      it('replaces the nil value with zero to return the correct sum', () => {
+        frame = new Frame(([10, null]));
+        expect(frame.score()).toEqual(10);
+      });
+    });
+  });
 });
