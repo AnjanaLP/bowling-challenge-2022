@@ -12,4 +12,8 @@ class Frame {
     );
     return sumOfPinsKnocked;
   }
+
+  isStrike() {
+    return this.rolls[0] == 10;
+  }
 }

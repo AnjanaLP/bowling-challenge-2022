@@ -16,7 +16,7 @@ describe('Frame', () => {
 
     describe('when there is a third roll', () => {
       it('returns the pins knocked in the first, second and third roll in order', () => {
-        frame = new Frame(([3, 2, 5]));
+        frame = new Frame([3, 2, 5]);
         expect(frame.rolls).toEqual([3, 2, 5]);
       });
     });
@@ -30,8 +30,23 @@ describe('Frame', () => {
 
     describe('when there is no input for a roll', () => {
       it('replaces the nil value with zero to return the correct sum', () => {
-        frame = new Frame(([10, null]));
+        frame = new Frame([10, null]);
         expect(frame.score()).toEqual(10);
+      });
+    });
+  });
+
+  describe('#isStrike', () => {
+    describe('when the first roll score is not equal to 10', () => {
+      it('returns false', () => {
+        expect(frame.isStrike()).toBe(false);
+      });
+    });
+
+    describe('when the first roll score is equal to 10', () => {
+      it('returns true', () => {
+        frame = new Frame([10]);
+        expect(frame.isStrike()).toBe(true);
       });
     });
   });
