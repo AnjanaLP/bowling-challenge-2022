@@ -72,4 +72,18 @@ describe('Frame', () => {
       });
     });
   });
+
+  describe('#bonus', () => {
+    describe('when the number of rolls given is 1', () => {
+      it('returns the number of pins knocked in the first roll', () => {
+        expect(frame.bonus(1)).toEqual(3);
+      });
+    });
+
+    describe('when the number of rolls given is 2', () => {
+      it('returns the number of pins knocked in the first and second roll', () => {
+        expect(frame.bonus(2)).toEqual(5);
+      });
+    });
+  });
 });

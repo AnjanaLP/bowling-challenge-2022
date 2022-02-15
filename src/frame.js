@@ -23,4 +23,8 @@ class Frame {
     }
     return this.rolls[0] + this.rolls[1] === 10;
   }
+
+  bonus(rolls) {
+    return ( rolls === 1 ? this.rolls[0] : this.rolls[0] + this.rolls[1]);
+  }
 }
