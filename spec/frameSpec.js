@@ -50,4 +50,26 @@ describe('Frame', () => {
       });
     });
   });
+
+  describe('#isSpare', () => {
+    describe('when the first and second roll scores do not equal 10', () => {
+      it('returns false', () => {
+        expect(frame.isSpare()).toBe(false);
+      });
+    });
+
+    describe('when the first roll is a strike', () => {
+      it('returns false', () => {
+        frame = new Frame([10]);
+        expect(frame.isSpare()).toBe(false);
+      });
+    });
+
+    describe('when the first and second roll scores equal 10', () => {
+      it('returns true', () => {
+        frame = new Frame([4, 6]);
+        expect(frame.isSpare()).toBe(true);
+      });
+    });
+  });
 });

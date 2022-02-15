@@ -14,6 +14,13 @@ class Frame {
   }
 
   isStrike() {
-    return this.rolls[0] == 10;
+    return this.rolls[0] === 10;
+  }
+
+  isSpare() {
+    if (this.isStrike()) {
+      return false;
+    }
+    return this.rolls[0] + this.rolls[1] === 10;
   }
 }
