@@ -2,22 +2,14 @@ $(document).ready(function() {
   var game = new Game();
 
   $('#calculate-score').click(function() {
-    for (let i = 1; i < 19; i+= 2) {
-      game.createFrame([parseInt($(`#input-${i}`).val()), parseInt($(`#input-${i+1}`).val())])
-    }
-    game.createFrame([parseInt($(`#input-19`).val()), parseInt($(`#input-20`).val()), parseInt($(`#input-21`).val()) ])
-
-    updateScore()
+    filterInputs();
+    updateScore();
   });
 
   $('#reset-game').click(function() {
     game = new Game();
-    for (let i = 0; i < 10; i++) {
-      $(`#frame-${i+1}-score`).text("");
-    }
-    for (let i = 1; i < 22; i++) {
-      $(`#input-${i}`).val('')
-    }
+    resetRunningTotals();
+    resetInputValues();
   });
 
   function updateScore() {
@@ -26,4 +18,32 @@ $(document).ready(function() {
     }
     $('#frame-10-score').css('color', 'red');
   };
+
+  function filterInputs() {
+    let inputs = [];
+    for (let i = 1; i < 22; i++) {
+      let val = $(`#input-${i}`).val();
+      val === "" ? inputs.push(0) : inputs.push(parseInt(val));
+    }
+    createFrames(inputs);
+  }
+
+  function createFrames(inputs) {
+    for (let i = 0; i < 18; i+=2) {
+      game.createFrame([inputs[i], inputs[i+1]]);
+    }
+    game.createFrame([inputs[18], inputs[19], inputs[20]]);
+  }
+
+  function resetRunningTotals() {
+    for (let i = 0; i < 10; i++) {
+      $(`#frame-${i+1}-score`).text("");
+    }
+  }
+
+  function resetInputValues() {
+    for (let i = 1; i < 22; i++) {
+      $(`#input-${i}`).val('')
+    }
+  }
 });
