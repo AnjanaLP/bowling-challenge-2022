@@ -15,29 +15,24 @@ class Game {
   }
 
   runningTotalScore() {
-    const cumulativeSum = (sum => value => sum += value)(0);
-    return this._individualFrameScores().map(cumulativeSum);
+    let frameScores = this._frames.map(frame => this._calculateScore(frame));
+    return frameScores.map((sum => value => sum += value)(0));
   }
 
-  _individualFrameScores() {
-    let sums = []
-    for (let i = 0; i < 10; i++) {
-      let frame = this._frames[i];
-      let sum = 0;
-      sum += frame.sumOfPinsKnocked();
-      if ( this._nextFrame(frame, 1)) {
-        if (frame.isStrike()) {
-          sum += this._nextFrame(frame, 1).bonus(2);
-          if (this._isTwoConsecutiveStrikes(frame)) {
-            sum += this._nextFrame(frame, 2).bonus(1);
-          }
-        } else if (frame.isSpare()) {
-          sum += this._nextFrame(frame, 1).bonus(1);
+  _calculateScore(frame) {
+    let sum = 0;
+    sum += frame.sumOfPinsKnocked();
+    if ( this._nextFrame(frame, 1)) {
+      if (frame.isStrike()) {
+        sum += this._nextFrame(frame, 1).bonus(2);
+        if (this._isTwoConsecutiveStrikes(frame)) {
+          sum += this._nextFrame(frame, 2).bonus(1);
         }
+      } else if (frame.isSpare()) {
+        sum += this._nextFrame(frame, 1).bonus(1);
       }
-      sums.push(sum)
     }
-    return sums;
+    return sum;
   }
 
   _isTwoConsecutiveStrikes(frame) {
