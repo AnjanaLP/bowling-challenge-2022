@@ -14,12 +14,17 @@ class Game {
     this._frames.push(frame);
   }
 
-  individualScores() {
+  runningTotalScore() {
+    const cumulativeSum = (sum => value => sum += value)(0);
+    return this._individualFrameScores().map(cumulativeSum);
+  }
+
+  _individualFrameScores() {
     let sums = []
     for (let i = 0; i < 10; i++) {
       let frame = this._frames[i];
       let sum = 0;
-      sum += frame.score();
+      sum += frame.sumOfPinsKnocked();
       if (this._nextFrame(frame, 1)) {
         if (frame.isStrike()) {
           if (this._nextFrame(frame, 1).isStrike()) {

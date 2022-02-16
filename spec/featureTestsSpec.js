@@ -17,14 +17,14 @@ describe('Score calculation', () => {
     game.createFrame([10, 0])
     game.createFrame([2, 8, 6])
 
-    expect(game.individualScores()).toEqual([ 5, 9, 15, 20, 11, 1, 16, 20, 20, 16 ]);
+    expect(game.runningTotalScore()).toEqual([ 5, 14, 29, 49, 60, 61, 77, 97, 117, 133]);
   });
 
   it('a gutter game returns the correct score', () => {
     for (let i = 0; i < 10; i++) {
       game.createFrame([0, 0])
     }
-    expect(game.individualScores()).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]);
+    expect(game.runningTotalScore()).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]);
   });
 
   it('a perfect game returns the correct score', () => {
@@ -32,6 +32,6 @@ describe('Score calculation', () => {
       game.createFrame([10, 0])
     }
     game.createFrame([10, 10, 10])
-    expect(game.individualScores()).toEqual([ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 ]);
+    expect(game.runningTotalScore()).toEqual([ 30, 60, 90, 120, 150, 180, 210, 240, 270, 300 ]);
   });
 });
