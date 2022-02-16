@@ -22,16 +22,24 @@ describe('Frame', () => {
     });
   });
 
-  describe('#score', () => {
-    it('returns the sum of the pins knocked in the frame', () => {
-      expect(frame.score()).toEqual(5);
+  describe('#sumOfPinsKnocked', () => {
+    describe('when there are two rolls', () => {
+      it('returns the sum of the pins knocked in the first and second roll', () => {
+        expect(frame.sumOfPinsKnocked()).toEqual(5);
+      });
+    });
 
+    describe('when there are three rolls', () => {
+      it('returns the sum of the pins knocked in the first, second and third roll', () => {
+        frame = new Frame([2, 8, 6]);
+        expect(frame.sumOfPinsKnocked()).toEqual(16);
+      });
     });
 
     describe('when there is no input for a roll', () => {
-      it('replaces the nil value with zero to return the correct sum', () => {
+      it('still calculates the correct sum without throwing an error', () => {
         frame = new Frame([10, null]);
-        expect(frame.score()).toEqual(10);
+        expect(frame.sumOfPinsKnocked()).toEqual(10);
       });
     });
   });
