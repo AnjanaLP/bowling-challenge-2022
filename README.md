@@ -1,4 +1,6 @@
 # Bowling Challenge
+![Screenshot](https://i.imgur.com/UaIJECM.png)
+
 This is a bowling scorecard to count and sum the scores of a bowling game for one
 player, written in JavaScript and tested with Jasmine. An interactive interface
 has been created using jQuery.
@@ -42,7 +44,6 @@ display your running scores with the final score at the bottom in red.
 
 Click 'Start a new game' to reset the scorecard.
 
-![Screenshot](https://i.imgur.com/UaIJECM.png)
 
 ## Run the tests
 ```
