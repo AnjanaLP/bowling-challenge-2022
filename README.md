@@ -8,7 +8,7 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 depends on strikes and spares. The score of a frame is the number of knocked down
 pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-###### Strikes
+**Strikes**
 The player has a strike if he knocks down all 10 pins with the first roll in a frame.
 The frame ends immediately (since there are no pins left for a second roll).
 The bonus for that frame is the number of pins knocked down by the next two rolls.
