@@ -1,9 +1,9 @@
 # Bowling Challenge
-![Screenshot](https://i.imgur.com/UaIJECM.png)
-
 This is a bowling scorecard to count and sum the scores of a bowling game for one
 player, written in JavaScript and tested with Jasmine. An interactive interface
 has been created using jQuery.
+
+![Screenshot](https://i.imgur.com/UaIJECM.png)
 
 A bowling game consists of 10 frames in which the player tries to knock down the
 10 pins. In every frame the player can roll one or two times. The actual number
