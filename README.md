@@ -42,7 +42,7 @@ display your running scores with the final score at the bottom in red.
 
 Click 'Start a new game' to reset the scorecard.
 
-[Imgur](https://i.imgur.com/bMktPqJ.png)
+![Imgur](https://i.imgur.com/bMktPqJ.png)
 
 ## Run the tests
 ```
